@@ -1,0 +1,1 @@
+{"name":"trace-aicte","private":true,"workspaces":["packages/*","apps/*"],"scripts":{"test":"npm -w packages/shared test","dev":"npm -w apps/web run dev","build":"npm -w apps/web run build"}}
