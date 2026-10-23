@@ -11,3 +11,7 @@ Verify manually: officer@trace.test sees 4 obligations; institution@trace.test s
 ## Round 3
 Added: 0003_transitions.sql (workflow_transitions table + transition_application() SECURITY DEFINER: role/institution/version/reason checks, atomic audit event + idempotent outbox row), Applications page with audit timeline, 10 SQL tests run on PGlite (in-process Postgres) with stubbed auth.uid().
 Limits: PGlite runs as superuser so RLS policies themselves are NOT exercised by tests; verify manually per role in Supabase. Rejected attempts are not audited (the exception rolls back the transaction). Not yet: write RLS policies for documents/obligations, storage policies, worker for outbox.
+
+## Round 4
+Added: 0004 (register_document, review_document, process_outbox simulator, evidence_reviews, RLS on notification_attempts), 0005 storage policies, Evidence and Notifications pages. 31 tests pass (8 new SQL tests on PGlite).
+UNVERIFIED: storage policies and browser upload/download (need real Supabase); client-side magic-byte check is a convenience only (server-side validation of file content not implemented); process_outbox is invoked manually (no scheduler yet); OCR not implemented.

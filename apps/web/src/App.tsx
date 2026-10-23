@@ -1,4 +1,4 @@
-import { useState } from 'react'; import { Routes, Route, NavLink } from 'react-router-dom'; import Live from './Live'; import Applications from './Applications';
+import { useState } from 'react'; import { Routes, Route, NavLink } from 'react-router-dom'; import Live from './Live'; import Applications from './Applications'; import Evidence from './Evidence'; import Notifications from './Notifications';
 import { applyTransition, enqueue, processOutbox, verify, type Outbox, type Event } from '@trace/shared';
 const card: React.CSSProperties = { border: '1px solid #cbd5e1', borderRadius: 8, padding: 16, margin: '12px 0', background: '#fff' };
 function Governance() {
@@ -19,7 +19,7 @@ export function Shell({ who, onOut }: { who: string; onOut: () => void }) {
   return <div style={{ fontFamily: 'system-ui', maxWidth: 960, margin: '0 auto', padding: 16, color: '#0f172a' }}>
     <h1 style={{ color: '#1e3a8a' }}>TRACE-AICTE</h1><span style={{ float: 'right' }}>{who} <button onClick={onOut}>Log out</button></span>
     <small>Synthetic demo data · illustrative rules · not an official AICTE system</small>
-    <nav style={{ display: 'flex', gap: 16, margin: '12px 0' }}><NavLink to="/">Command Center</NavLink><NavLink to="/applications">Applications</NavLink><NavLink to="/governance">Governance</NavLink></nav>
+    <nav style={{ display: 'flex', gap: 16, margin: '12px 0' }}><NavLink to="/">Command Center</NavLink><NavLink to="/applications">Applications</NavLink><NavLink to="/evidence">Evidence</NavLink><NavLink to="/notifications">Notifications</NavLink><NavLink to="/governance">Governance</NavLink></nav>
     <label>Demo clock offset (days): <input type="number" value={off} onChange={e => setOff(+e.target.value)} /></label>
-    <Routes><Route path="/" element={<Live now={now} simulated={off !== 0} />} /><Route path="/applications" element={<Applications />} /><Route path="/governance" element={<Governance />} /></Routes></div>;
+    <Routes><Route path="/" element={<Live now={now} simulated={off !== 0} />} /><Route path="/applications" element={<Applications />} /><Route path="/evidence" element={<Evidence />} /><Route path="/notifications" element={<Notifications />} /><Route path="/governance" element={<Governance />} /></Routes></div>;
 }
